@@ -9,3 +9,6 @@ class Film(models.Model):
 
     def __str__(self):
         return self.film_title
+
+    class Meta:
+        ordering=['film_title']
