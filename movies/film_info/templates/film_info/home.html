@@ -1,11 +1,38 @@
-<h1>MOVIES</h1>
-<br></br>
+<head>
+  <!-- Compiled and minified CSS -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
-{%for am in all_movies%}
-  <p>Film: {{am.film_title}}</p>
-  <p>Year Released: {{am.year}}</p>
-  <p>Genre: {{am.genre}}</p>
-  <p>Review: {{am.review}}</p>
+   <!-- Compiled and minified JavaScript -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
+</head>
+
+<body>
+  <h1>MOVIES</h1>
   <br></br>
-{%endfor%}
+
+
+
+  <div class="row">
+    {%for am in all_movies%}
+      <div class="col s12 m6">
+        <div class="card purple lighten-4">
+          <div class="card-content black-text">
+            <span class="card-title">{{am.film_title}}</span>
+            <p>Year Released: {{am.year}}</p>
+            <p>Genre: {{am.genre}}</p>
+            <p>Review: {{am.review}}</p>
+          </div>
+          <div class="card-action deep-purple">
+            <a href="#">More</a>
+
+          </div>
+        </div>
+      </div>
+      {%endfor%}
+    </div>
+
+
+
+
+</body>
