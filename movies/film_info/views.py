@@ -1,7 +1,8 @@
 from django.shortcuts import render
 
-# Create your views here.
 from django.http import HttpResponse
 
+from .models import Film
+
 def homepage(request):
-    return HttpResponse ("<h2>MOVIES</h2>")
+    return render(request=request, template_name="film_info/home.html", context={"all_movies": Film.objects.all()})

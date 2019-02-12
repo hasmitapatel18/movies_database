@@ -12,3 +12,6 @@ class Film(models.Model):
 
     class Meta:
         ordering=['film_title']
+
+    def get_queryset(self):
+        return Film.objects.all()

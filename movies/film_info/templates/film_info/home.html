@@ -1,0 +1,11 @@
+<h1>MOVIES</h1>
+<br></br>
+
+{%for am in all_movies%}
+  <p>Film: {{am.film_title}}</p>
+  <p>Year Released: {{am.year}}</p>
+  <p>Genre: {{am.genre}}</p>
+  <p>Review: {{am.review}}</p>
+
+  <br></br>
+{%endfor%}
