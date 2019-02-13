@@ -10,13 +10,15 @@ from django.contrib.auth import login, logout, authenticate
 
 from django.contrib import messages
 
+from .forms import NewUserForm
+
 
 def homepage(request):
     return render(request=request, template_name="film_info/home.html", context={"all_movies": Film.objects.all()})
 
 def register(request):
     if request.method == "POST":
-        form = UserCreationForm(request.POST)
+        form = NewUserForm(request.POST)
         if form.is_valid():
             user = form.save()
             username= form.cleaned_data.get('username')
@@ -28,7 +30,7 @@ def register(request):
             for msg in form.error_messages:
                 messages.error(request, f"{msg}: {form.error_messages[msg]}")
 
-    form = UserCreationForm
+    form = NewUserForm
     return render(request=request, template_name="film_info/register.html", context={"form": form})
 
 
