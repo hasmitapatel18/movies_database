@@ -1,0 +1,11 @@
+{%extends "film_info/header.html" %}
+
+{%block content%}
+
+    {%for ar in all_reviews%}
+      <h1>{{ar.review_film}}</h1>
+      <p>Summary: {{ar.summary}}</p>
+      <p>Review: {{ar.review}}</p>
+    {%endfor%}
+
+{%endblock%}

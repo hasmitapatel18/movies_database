@@ -1,9 +1,18 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Film
+from .models import Film, Review
+
 
 class FilmAdmin(admin.ModelAdmin):
-    fields = ["film_title", "year", "genre", "review"]
+    fields = [("film_title", "year", "genre", "review")]
+
+    # , ("URL", {"fields":["review_slug"]})
+
+
+class ReviewAdmin(admin.ModelAdmin):
+    fields = ["summary", "review", "review_film"]
+
 
 admin.site.register(Film)
+admin.site.register(Review)

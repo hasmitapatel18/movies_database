@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 
 from django.http import HttpResponse
 
-from .models import Film
+from .models import Film, Review
 
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 
@@ -12,9 +12,25 @@ from django.contrib import messages
 
 from .forms import NewUserForm
 
+# def single_slug(request, single_slug):
+#     reviewss = [r.review_slug for r in Film.objects.all()]
+#     if single_slug in reviewss:
+#       return HttpResponse(f"{single_slug} is a category")
+#     return HttpResponse(f"'{single_slug}' does not correspond to anything we know of!")
 
 def homepage(request):
     return render(request=request, template_name="film_info/home.html", context={"all_movies": Film.objects.all()})
+
+def reviewpage(request):
+    return render(request=request, template_name="film_info/reviewpage.html", context={"all_reviews": Review.objects.all()})
+
+
+def filminstance(request):
+    Review.objects.filter(associatedrev=film_film_title.id)
+    return render(request, 'reviewpage.html', associatedrev=associatedrev)
+
+
+
 
 def register(request):
     if request.method == "POST":
