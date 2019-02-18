@@ -12,6 +12,8 @@ from django.contrib import messages
 
 from .forms import NewUserForm
 
+from django.template import loader
+
 # def single_slug(request, single_slug):
 #     reviewss = [r.review_slug for r in Film.objects.all()]
 #     if single_slug in reviewss:
@@ -21,16 +23,8 @@ from .forms import NewUserForm
 def homepage(request):
     return render(request=request, template_name="film_info/home.html", context={"all_movies": Film.objects.all()})
 
-def reviewpage(request):
-    return render(request=request, template_name="film_info/reviewpage.html", context={"all_reviews": Review.objects.all()})
-
-
-def filminstance(request):
-    Review.objects.filter(associatedrev=film_film_title.id)
-    return render(request, 'reviewpage.html', associatedrev=associatedrev)
-
-
-
+def reviewpage(request, review_id):
+    return render(request=request, template_name="film_info/reviewpage.html", context={"rpage": Review.objects.get(id=review_id)})
 
 def register(request):
     if request.method == "POST":

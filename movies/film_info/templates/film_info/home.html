@@ -12,11 +12,9 @@
 
             <p>Genre: {{am.genre}}</p>
           </div>
-
-          <div class="card-action deep-purple">
-            <a href="reviewpage/">More</a>
-
-          </div>
+          {% for review in am.review_set.all %}
+          <a href=" {% url 'film_info:reviewpage' review_id=review.id %} ">More</a>
+          {% endfor %}
         </div>
       </div>
       {%endfor%}
