@@ -5,9 +5,9 @@ from .models import Film, Review
 
 
 class FilmAdmin(admin.ModelAdmin):
-    fields = [("film_title", "year", "genre", "review")]
+    fields = [("film_title", "year", "genre")]
 
-    # , ("URL", {"fields":["review_slug"]})
+
 
 
 class ReviewAdmin(admin.ModelAdmin):

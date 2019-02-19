@@ -14,17 +14,18 @@ from .forms import NewUserForm
 
 from django.template import loader
 
-# def single_slug(request, single_slug):
-#     reviewss = [r.review_slug for r in Film.objects.all()]
-#     if single_slug in reviewss:
-#       return HttpResponse(f"{single_slug} is a category")
-#     return HttpResponse(f"'{single_slug}' does not correspond to anything we know of!")
+
 
 def homepage(request):
     return render(request=request, template_name="film_info/home.html", context={"all_movies": Film.objects.all()})
 
 def reviewpage(request, review_id):
     return render(request=request, template_name="film_info/reviewpage.html", context={"rpage": Review.objects.get(id=review_id)})
+
+
+
+
+
 
 def register(request):
     if request.method == "POST":
