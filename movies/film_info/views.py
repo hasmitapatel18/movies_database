@@ -1,8 +1,8 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 
 from django.http import HttpResponse
 
-from .models import Film, Review
+from .models import Film, Review, Comment
 
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 
@@ -10,9 +10,10 @@ from django.contrib.auth import login, logout, authenticate
 
 from django.contrib import messages
 
-from .forms import NewUserForm
+from .forms import NewUserForm, CommentForm
 
 from django.template import loader
+
 
 
 
@@ -20,7 +21,10 @@ def homepage(request):
     return render(request=request, template_name="film_info/home.html", context={"all_movies": Film.objects.all()})
 
 def reviewpage(request, review_id):
-    return render(request=request, template_name="film_info/reviewpage.html", context={"rpage": Review.objects.get(id=review_id)})
+    rpage = Review.objects.get(id=review_id)
+
+    context={'rpage':rpage}
+    return render(request=request, template_name="film_info/reviewpage.html", context=context)
 
 
 
