@@ -14,6 +14,7 @@ from .forms import NewUserForm, CommentForm
 
 from django.template import loader
 
+from django.core.exceptions import ObjectDoesNotExist
 
 
 
@@ -22,13 +23,10 @@ def homepage(request):
 
 def reviewpage(request, review_id):
     rpage = Review.objects.get(id=review_id)
-
-    context={'rpage':rpage}
+    film_id = rpage.review_film.id
+    cpage = Comment.objects.filter(post=film_id)
+    context={'rpage':rpage, 'cpage':cpage}
     return render(request=request, template_name="film_info/reviewpage.html", context=context)
-
-
-
-
 
 
 def register(request):

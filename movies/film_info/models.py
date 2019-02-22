@@ -39,6 +39,10 @@ class Comment(models.Model):
     timestamp = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
+        return self.post
+
+    def __str__(self):
         return self.content
 
-    
+    def get_queryset(self):
+        return Comment.objects.all()

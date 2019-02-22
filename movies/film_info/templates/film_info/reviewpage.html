@@ -7,10 +7,15 @@
       <p>Summary: {{rpage.summary}}</p>
       <p>Review: {{rpage.review}}</p>
 
-
-
-
-
-
+<br></br>
+<h3>Comments</h3>
+<br></br>
+{% for c in cpage %}
+  {{ c.content }}
+  <br></br>
+  {{ c.user }}, {{ c.timestamp }}
+  <br></br>
+  <br></br>
+{% endfor %}
 
 {%endblock%}
