@@ -4,6 +4,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 from django.conf import settings
+from django.urls import reverse
 
 class Film(models.Model):
     film_title=models.CharField(max_length=200)
@@ -46,3 +47,9 @@ class Comment(models.Model):
 
     def get_queryset(self):
         return Comment.objects.all()
+
+    # def __str__(self):
+    #     return 'Comment by {} on {}'.format(self.user, self.post)
+
+    # class Meta:
+    #     ordering = ('timestamp',)

@@ -19,6 +19,7 @@ class CommentAdmin(admin.ModelAdmin):
     fields = ["post", "user", "content", "timestamp"]
 
 
+
 admin.site.register(Film)
 admin.site.register(Review)
 admin.site.register(Comment)

@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 
 from .models import Film, Review, Comment
 
@@ -16,17 +16,45 @@ from django.template import loader
 
 from django.core.exceptions import ObjectDoesNotExist
 
+from django.forms import modelformset_factory
+
+from django.views.decorators.http import require_POST
+
 
 
 def homepage(request):
     return render(request=request, template_name="film_info/home.html", context={"all_movies": Film.objects.all()})
 
+
+
+
 def reviewpage(request, review_id):
     rpage = Review.objects.get(id=review_id)
     film_id = rpage.review_film.id
     cpage = Comment.objects.filter(post=film_id)
-    context={'rpage':rpage, 'cpage':cpage}
+
+
+    if request.method == "POST":
+        form = CommentForm(request.POST or None)
+
+        if form.is_valid():
+            f=Comment(content=request.POST['content'])
+
+
+            f.save()
+        
+
+    else:
+        form=CommentForm()
+
+
+
+
+    context={'rpage':rpage, 'cpage':cpage, 'form':form}
     return render(request=request, template_name="film_info/reviewpage.html", context=context)
+
+
+
 
 
 def register(request):

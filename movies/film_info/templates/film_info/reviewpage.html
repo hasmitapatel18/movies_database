@@ -7,15 +7,53 @@
       <p>Summary: {{rpage.summary}}</p>
       <p>Review: {{rpage.review}}</p>
 
-<br></br>
-<h3>Comments</h3>
-<br></br>
-{% for c in cpage %}
-  {{ c.content }}
-  <br></br>
-  {{ c.user }}, {{ c.timestamp }}
-  <br></br>
-  <br></br>
-{% endfor %}
 
-{%endblock%}
+      <br></br>
+
+      <h3>Comments</h3>
+      <br></br>
+      <div class="row">
+        <form method="POST" class="col s12">{% csrf_token %}
+          {{ form.as_p }}
+          <div class="row">
+            <div class="input-field col s12">
+              <!-- <textarea id="textarea1" class="materialize-textarea"></textarea> -->
+              <!-- <label for="textarea1">Write a comment</label> -->
+              <button class="btn" type="submit">Submit</button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+
+
+
+<!-- {% with comments.count as total_comments %}
+  <b> {{ total_comments }} comment{{ total_comments|pluralize }} </b>
+{% endwith %} -->
+
+<!--
+{% for comment in comments %}
+  <div class="comment">
+    <p class="info">
+      Comment {{ forloop.counter }} by {{ comment.user }}
+      {{ comment.timestamp }}
+    </p>
+        {{ comment.content|linebreaks }}
+  </div>
+  {% empty %}
+  <p>There are no comments yet.</p>
+  {% endfor %} -->
+
+      <b>{{ cpage.count }} Comment{{ cpage|pluralize }}</b>
+      <br></br>
+      <br></br>
+      {% for c in cpage %}
+        {{ c.content }}
+        <br></br>
+        {{ c.user|capfirst }}, {{ c.timestamp }}
+        <br></br>
+        <br></br>
+      {% endfor %}
+
+      {%endblock%}
