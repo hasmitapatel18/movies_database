@@ -47,6 +47,7 @@ def reviewpage(request, review_id):
 
             cc.save()
 
+            form=CommentForm()
 
     else:
         form=CommentForm()
