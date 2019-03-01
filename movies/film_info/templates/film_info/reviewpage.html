@@ -14,14 +14,21 @@
       <br></br>
       <div class="row">
         <form method="POST" class="col s12">{% csrf_token %}
-          {{ form.as_p }}
+          <!-- {{ form.as_p }} -->
+          <p><label style="font-size:17px" for="id_content">Leave a comment</label>
+            <input id="id_content" type="text" name="content" maxlength="500" required /></p>
+
           <div class="row">
             <div class="input-field col s12">
               <!-- <input id="content" type="text" class="validate">
               <label for="content">Leave a comment</label> -->
-              <!-- <textarea id="textarea1" class="materialize-textarea"></textarea> -->
-              <!-- <label for="textarea1">Write a comment</label> -->
+              <!-- <textarea id="textarea1" class="materialize-textarea"></textarea>
+              <label for="textarea1">Write a comment</label> -->
+            {% if request.user.is_authenticated %}
               <button class="btn" type="submit">Submit</button>
+            {% else %}
+              <button class="btn" type="submit" disabled>Submit</button>
+            {% endif %}
             </div>
           </div>
         </form>
