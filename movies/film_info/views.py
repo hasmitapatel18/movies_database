@@ -29,20 +29,24 @@ def homepage(request):
 
 
 def reviewpage(request, review_id):
+
     rpage = Review.objects.get(id=review_id)
     film_id = rpage.review_film.id
     cpage = Comment.objects.filter(post=film_id)
+
+
 
 
     if request.method == "POST":
         form = CommentForm(request.POST or None)
 
         if form.is_valid():
-            f=Comment(content=request.POST['content'])
+            cpage = Comment.objects.filter(post=film_id)
+            content=request.POST.get('content')
+            cc=Comment.objects.create( post_id=film_id, user=request.user, content=content)
 
+            cc.save()
 
-            f.save()
-        
 
     else:
         form=CommentForm()

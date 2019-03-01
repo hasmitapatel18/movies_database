@@ -29,6 +29,7 @@ class Review(models.Model):
     def __str__(self):
         return self.summary
 
+
     def get_queryset(self):
         return Review.objects.all()
 
@@ -51,5 +52,5 @@ class Comment(models.Model):
     # def __str__(self):
     #     return 'Comment by {} on {}'.format(self.user, self.post)
 
-    # class Meta:
-    #     ordering = ('timestamp',)
+    class Meta:
+        ordering = ('timestamp',)
