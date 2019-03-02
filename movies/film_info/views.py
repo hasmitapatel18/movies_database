@@ -10,7 +10,7 @@ from django.contrib.auth import login, logout, authenticate
 
 from django.contrib import messages
 
-from .forms import NewUserForm, CommentForm
+from .forms import NewUserForm, CommentForm, FilmForm, ReviewForm
 
 from django.template import loader
 
@@ -34,9 +34,6 @@ def reviewpage(request, review_id):
     film_id = rpage.review_film.id
     cpage = Comment.objects.filter(post=film_id)
 
-
-
-
     if request.method == "POST":
         form = CommentForm(request.POST or None)
 
@@ -48,16 +45,47 @@ def reviewpage(request, review_id):
             cc.save()
 
             form=CommentForm()
-
     else:
         form=CommentForm()
-
-
-
 
     context={'rpage':rpage, 'cpage':cpage, 'form':form}
     return render(request=request, template_name="film_info/reviewpage.html", context=context)
 
+
+
+def filmformpage(request):
+
+    if request.method == "POST":
+        fform = FilmForm(request.POST, request.FILES)
+
+        if fform.is_valid():
+            film_title=request.POST.get('film_title')
+            year=request.POST.get('year')
+            genre=request.POST.get('genre')
+            image = fform.cleaned_data['image']
+
+
+            ff=Film.objects.create(film_title=film_title, year=year, genre=genre, image=image)
+            ff.save()
+    else:
+        fform=FilmForm()
+
+    if request.method == "POST":
+        rform = ReviewForm(request.POST, request.FILES)
+
+        if rform.is_valid():
+            summary=request.POST.get('summary')
+            review=request.POST.get('review')
+
+            rf=Review.objects.create( summary=summary)
+            rf.review=review
+            rf.review_film_id=ff.id
+            rf.save()
+    else:
+        rform=ReviewForm()
+
+    context={'fform':fform, 'rform':rform}
+    return render(request=request, template_name="film_info/filmformpage.html", context=context)
 
 
 

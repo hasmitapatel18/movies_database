@@ -11,6 +11,8 @@ class Film(models.Model):
     year = models.PositiveSmallIntegerField(blank=True, null=True)
     genre=models.CharField(max_length=100)
     image = models.ImageField(upload_to = 'media/', blank=True, null=True)
+    uploaded_at = models.DateTimeField(auto_now_add=True)
+
 
     def __str__(self):
         return self.film_title

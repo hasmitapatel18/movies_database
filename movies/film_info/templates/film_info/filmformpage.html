@@ -1,0 +1,93 @@
+{%extends "film_info/header.html" %}
+
+{%block content%}
+
+<div class="row">
+  <form method="POST" class="col s12" enctype='multipart/form-data'>
+    {% csrf_token %}
+    {{ fform.as_p }}
+    {{ rform.as_p }}
+    <!-- <div class="row">
+    <div class="col-25"> -->
+      <!-- <label for="ft">Film Title</label> -->
+    <!-- </div>
+    <div class="col-75">
+      <input type="text" id="ft" name="film title" placeholder="Film Title">
+    </div>
+  </div>
+
+    <div class="row">
+    <div class="col-25"> -->
+      <!-- <label for="year">Year</label> -->
+    <!-- </div>
+    <div class="col-75">
+      <input type="number" id="year" name="year" placeholder="Year">
+    </div>
+  </div>
+
+  <div class="row">
+  <div class="col-25"> -->
+    <!-- <label for="genre">Genre</label> -->
+  <!-- </div>
+  <div class="col-75">
+    <input type="text" id="genre" name="genre" placeholder="Genre">
+  </div>
+  </div>
+<br></br>
+  <div class="row">
+  <div class="col-25">
+    <label for="image">Upload film image</label>
+    <br></br>
+  </div>
+  <div class="col-75">
+    <input type="file"
+       id="image" name="image"
+       accept="image/png, image/jpeg, image.jpg">
+  </div>
+  </div> -->
+
+
+<!--
+  <div class="row">
+    <div class="input-field col s12">
+      <button class="btn " type="submit" background-color= "yellow">Submit</button>
+    </div>
+  </div>
+</form>
+</div> -->
+
+
+<!--
+<div class="row">
+  <form action="film_info/reviewpage/" method="POST" class="col s12">{% csrf_token %} -->
+    <!-- {{ rform.as_p }} -->
+    <!-- <div class="row">
+    <div class="col-25"> -->
+      <!-- <label for="summary">Summary</label> -->
+    <!-- </div>
+    <div class="col-75">
+      <textarea id="subject" name="subject" placeholder="Write a film summary" style="height:200px"></textarea>
+    </div>
+  </div>
+
+    <div class="row">
+    <div class="col-25"> -->
+      <!-- <label for="rev">Review</label> -->
+    <!-- </div>
+    <div class="col-75">
+      <textarea id="rev" name="rev" placeholder="Write a film review" style="height:200px"></textarea>
+    </div>
+  </div> -->
+
+
+
+    <div class="row">
+      <div class="input-field col s12">
+        <button class="btn " type="submit" background-color= "yellow">Submit</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+
+{%endblock%}
