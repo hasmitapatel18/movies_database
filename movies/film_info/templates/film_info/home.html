@@ -2,15 +2,20 @@
 
 {%block content%}
 
-  <div class="row">
+  <!-- <div class="row">
     {%for am in all_movies%}
       <div class="col s12 m6">
         <div class="card purple lighten-4">
           <div class="card-content black-text">
-            <span class="card-title">{{am.film_title}}</span>
+            <span class="card-title"><b>{{am.film_title}}</b>  {% if am.image != None %}
+                <img src="{{ am.image.url }}" width="150" height="150" ALIGN=right>
+              {% endif %}</span>
             <p>Year Released: {{am.year}}</p>
 
             <p>Genre: {{am.genre}}</p>
+            <br></br>
+
+
           </div>
           {% for review in am.review_set.all %}
           <a href=" {% url 'film_info:reviewpage' review_id=review.id %} ">More</a>
@@ -18,5 +23,38 @@
         </div>
       </div>
       {%endfor%}
-    </div>
+    </div> -->
+
+    <div class="row">
+      {%for am in all_movies%}
+       <div class="col s6 m5">
+         <div class="card">
+           <div class="card-image">
+             {% if am.image != None %}
+              <img src="{{ am.image.url }}" width="150" height="200">
+             {% endif %}
+
+           </div>
+           <div class="card-content">
+             <span class="card-title"><b>{{am.film_title}}</b></span>
+             <p>Year Released: {{am.year}}</p>
+             <p>Genre: {{am.genre}}</p>
+           </div>
+           {% for review in am.review_set.all %}
+           <div class="card-action">
+             <a href=" {% url 'film_info:reviewpage' review_id=review.id %} " style="color:teal">More</a>
+          {% endfor %}
+           </div>
+         </div>
+       </div>
+       {%endfor%}
+     </div>
+
+
+
+
+
+
+
+
 {%endblock%}

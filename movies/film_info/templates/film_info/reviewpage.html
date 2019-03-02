@@ -2,7 +2,7 @@
 
 {%block content%}
 
-      <a href="{% url 'film_info:homepage' %}">&lt; Back</a>
+      <a href="{% url 'film_info:homepage' %}" style="color:teal">&lt; Back</a>
       <h1>{{rpage.review_film}}</h1>
       <p>Summary: {{rpage.summary}}</p>
       <p>Review: {{rpage.review}}</p>
@@ -25,7 +25,7 @@
               <!-- <textarea id="textarea1" class="materialize-textarea"></textarea>
               <label for="textarea1">Write a comment</label> -->
             {% if request.user.is_authenticated %}
-              <button class="btn" type="submit">Submit</button>
+              <button class="btn " type="submit" background-color= "yellow">Submit</button>
             {% else %}
               <button class="btn" type="submit" disabled>Login to comment</button>
 

@@ -14,12 +14,12 @@
   <br></br>
 
   <nav>
-  <div class="nav-wrapper deep-purple accent-1">
+  <div class="nav-wrapper blue-grey ">
     <a href="/" class="brand-logo">Films</a>
     <ul id="nav-mobile" class="right hide-on-med-and-down">
       <li><a href="/">Home</a></li>
       {% if user.is_authenticated %}
-        <li><a href="/account">{{user.username}}</a></li>
+        <!-- <li><a href="/account">{{user.username}}</a></li> -->
         <li><a href="/logout">Logout</a></li>
       {% else %}
         <li><a href="/register">Register</a></li>

@@ -10,6 +10,7 @@ class Film(models.Model):
     film_title=models.CharField(max_length=200)
     year = models.PositiveSmallIntegerField(blank=True, null=True)
     genre=models.CharField(max_length=100)
+    image = models.ImageField(upload_to = 'media/', blank=True, null=True)
 
     def __str__(self):
         return self.film_title
@@ -39,6 +40,7 @@ class Comment(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, default=1, on_delete = models.SET_DEFAULT)
     content = models.TextField()
     timestamp = models.DateTimeField(auto_now_add=True)
+
 
     def __str__(self):
         return self.post
