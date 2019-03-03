@@ -67,6 +67,7 @@ def filmformpage(request):
 
             ff=Film.objects.create(film_title=film_title, year=year, genre=genre, image=image)
             ff.save()
+            fform = FilmForm()
     else:
         fform=FilmForm()
 
@@ -81,6 +82,7 @@ def filmformpage(request):
             rf.review=review
             rf.review_film_id=ff.id
             rf.save()
+            rform = ReviewForm()
     else:
         rform=ReviewForm()
 
