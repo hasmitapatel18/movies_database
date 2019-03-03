@@ -2,10 +2,14 @@
 
 {%block content%}
 
+<a href="{% url 'film_info:homepage' %}" style="color:teal">&lt; Back</a>
+<br></br>
+
 <div class="row">
   <form method="POST" class="col s12" enctype='multipart/form-data'>
     {% csrf_token %}
     {{ fform.as_p }}
+    <br></br>
     {{ rform.as_p }}
     <!-- <div class="row">
     <div class="col-25"> -->
@@ -59,7 +63,7 @@
 
 <!--
 <div class="row">
-  <form action="film_info/reviewpage/" method="POST" class="col s12">{% csrf_token %} -->
+  <form method="POST" class="col s12">{% csrf_token %} -->
     <!-- {{ rform.as_p }} -->
     <!-- <div class="row">
     <div class="col-25"> -->
